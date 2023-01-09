@@ -1,0 +1,110 @@
+- name: ensure php8.1 packages are not installed
+  apt:
+    name: php8.1*
+    state: absent
+
+- name: ensure release folder exists
+  file:
+    path: "{{release_folder}}"
+    state: directory
+
+- name: ensure php deploy folder exists
+  file:
+    path: "{{deploy_folder_destination}}"
+    owner: "{{target_user}}"
+    group: "{{target_group}}"
+    state: directory
+
+- name: pull repository in specific revision
+  ansible.builtin.git:
+    repo: "{{repository}}"
+    dest: "{{repository_destination}}"
+    update: yes
+    accept_hostkey: yes
+    version: "{{revision}}"
+
+# - name: ensure local .env file exists
+#   file:
+#     path: "{{dotenv_path}}"
+#     state: touch
+#     modification_time: preserve
+
+- name: set correct permissions
+  file:
+    path: "{{deploy_folder_destination}}"
+    owner: "{{target_user}}"
+    group: "{{target_group}}"
+    recurse: yes
+
+
+
+- name: copy app deployable php script
+  become: true
+  become_user: "{{target_user}}"
+  ansible.posix.synchronize:
+    src: "{{repository_destination}}/"
+    dest: "{{deploy_folder_destination}}"
+    # owner: yes
+    # group: yes
+    recursive: yes
+    # delete: yes
+    rsync_opts:
+      - "--exclude=runtime"
+      - "--exclude=vendor"
+      - "--exclude=.git"
+      - "--exclude=.env"
+      # so save locally changed configuration
+      # - "--exclude=common/config"
+  delegate_to: "{{ inventory_hostname }}"
+
+- name: make init script executable
+  file:
+    path: "{{deploy_folder_destination}}/init"
+    mode: "+x"
+  tags: 
+    - yii
+
+- name: exec Yii initialization
+  become: true
+  become_user: "{{target_user}}"
+  shell: './init --env={{yii_environment}} --overwrite=yes --delete=yes'
+  args:
+    chdir: "{{deploy_folder_destination}}"
+  tags: 
+    - yii
+
+
+- name: install composer deps
+  become: true
+  become_user: "{{target_user}}"
+  community.general.composer:
+    command: install
+    no_dev: false
+    working_dir: "{{deploy_folder_destination}}"
+
+# - name: change owner
+#   file:
+#     path: "{{repository_destination}}"
+#     owner: "{{target_user}}"
+#     group: "{{target_group}}"
+#     recurse: yes
+
+
+# - name: ensure docker services are running
+#   community.docker.docker_compose:
+#     project_src: "{{repository_destination}}"
+#     build: true
+#     pull: true
+#   environment: "{{ docker_env_vars }}"
+#   register: output
+
+# - ansible.builtin.debug:
+#     var: output
+
+# - name: ensure services started
+#   ansible.builtin.assert:
+#     that:
+#       - "output.services.nginx.nginx_frontend.state.running"
+#       - "output.services.php.backend_php_fpm.state.running"
+#     fail_msg: "Services do not started properly!"
+#     success_msg: "Services are online"

@@ -1,0 +1,16 @@
+release_folder: /opt/time_to_exchange
+project_name: time_to_exchange_backend
+
+repository: git@gitlab.com:time-to-exchange/time_to_exchange_backend.git
+
+dotenv_path: "{{repository_destination}}/.env"
+revision: feat/devops
+
+repository_destination: "{{release_folder}}/{{project_name}}"
+deploy_folder_destination: "/var/www/html/{{project_name}}"
+
+target_user: www-data
+target_group: www-data
+
+
+yii_environment: Development

@@ -1,0 +1,411 @@
+2022-10-31 14:31:02 [172.18.0.1][-][-][warning][yii\debug\Module::checkAccess] Access to debugger is denied due to IP address restriction. The requesting IP address is 172.18.0.1
+    in /var/www/html/frontend/views/layouts/main.php:80
+    in /var/www/html/frontend/controllers/SiteController.php:78
+2022-10-31 14:31:02 [172.18.0.1][-][-][warning][yii\debug\Module::checkAccess] Access to debugger is denied due to IP address restriction. The requesting IP address is 172.18.0.1
+2022-10-31 14:31:02 [172.18.0.1][-][-][info][application] $_GET = []
+
+$_POST = []
+
+$_FILES = []
+
+$_COOKIE = [
+    'Phpstorm-b9adccb0' => '59515f86-5102-43fe-a945-7b825f177028'
+    'remember_web_59ba36addc2b2f9401580f014c7f58ea4e30989d' => 'eyJpdiI6IkU2MGlPVWIxRTlVekhDMHpYakZJcEE9PSIsInZhbHVlIjoieit3K2pKUU1qL1FKQzdBSGpjZFVlRUhTOFNoK1dZQTFhMFN4SVluRnBBdXdDUC81eDc5eVBhR1R3R2tERTU0djJROTk4Z0cyS2FubHgzdVV2eUh2YTNUY2hMeFBtZE1WbXlFd0FBV2J2bVVSazVQTXBwQi9ubnJudkhCaUdyalJPOG4vMTdHTFRobW90dDRKRGZZcXh5YmRmK3JnRDJvL1lnczJ0N0o4RDRRSURJQ0tCYzlldGIxZHIxYTVCU2ZqWkJkaDU3L3dGbWI5bWQyNjNkSlZMRzE5L1orU2xNb28waWpYQm94VEg1az0iLCJtYWMiOiIyNDllOWEwYjEzMDFmYTA4MjZiNjUxNTM0MDU2NmVmOWVkMTk4MDdiMmRmYWQzNjRlZmJkZjNiYTFmMmYwYTlkIiwidGFnIjoiIn0='
+]
+
+$_SESSION = [
+    '__flash' => []
+]
+
+$_SERVER = [
+    'HOSTNAME' => '5358c4f2154f'
+    'PHP_INI_DIR' => '/usr/local/etc/php'
+    'HOME' => '/var/www'
+    'PHP_LDFLAGS' => '-Wl,-O1 -pie'
+    'PHP_CFLAGS' => '-fstack-protector-strong -fpic -fpie -O2 -D_LARGEFILE_SOURCE -D_FILE_OFFSET_BITS=64'
+    'PHP_VERSION' => '7.4.32'
+    'GPG_KEYS' => '42670A7FE4D0441C8E4632349E4FDC074A4EF02D 5A52880781F755608BF815FC910DEB46F53EA312'
+    'PHP_CPPFLAGS' => '-fstack-protector-strong -fpic -fpie -O2 -D_LARGEFILE_SOURCE -D_FILE_OFFSET_BITS=64'
+    'PHP_ASC_URL' => 'https://www.php.net/distributions/php-7.4.32.tar.xz.asc'
+    'PHP_URL' => 'https://www.php.net/distributions/php-7.4.32.tar.xz'
+    'PATH' => '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'
+    'PHPIZE_DEPS' => 'autoconf 		dpkg-dev 		file 		g++ 		gcc 		libc-dev 		make 		pkg-config 		re2c'
+    'PWD' => '/var/www/html'
+    'PHP_SHA256' => '323332c991e8ef30b1d219cb10f5e30f11b5f319ce4c6642a5470d75ade7864a'
+    'USER' => 'www-data'
+    'HTTP_COOKIE' => 'Phpstorm-b9adccb0=59515f86-5102-43fe-a945-7b825f177028; remember_web_59ba36addc2b2f9401580f014c7f58ea4e30989d=eyJpdiI6IkU2MGlPVWIxRTlVekhDMHpYakZJcEE9PSIsInZhbHVlIjoieit3K2pKUU1qL1FKQzdBSGpjZFVlRUhTOFNoK1dZQTFhMFN4SVluRnBBdXdDUC81eDc5eVBhR1R3R2tERTU0djJROTk4Z0cyS2FubHgzdVV2eUh2YTNUY2hMeFBtZE1WbXlFd0FBV2J2bVVSazVQTXBwQi9ubnJudkhCaUdyalJPOG4vMTdHTFRobW90dDRKRGZZcXh5YmRmK3JnRDJvL1lnczJ0N0o4RDRRSURJQ0tCYzlldGIxZHIxYTVCU2ZqWkJkaDU3L3dGbWI5bWQyNjNkSlZMRzE5L1orU2xNb28waWpYQm94VEg1az0iLCJtYWMiOiIyNDllOWEwYjEzMDFmYTA4MjZiNjUxNTM0MDU2NmVmOWVkMTk4MDdiMmRmYWQzNjRlZmJkZjNiYTFmMmYwYTlkIiwidGFnIjoiIn0%3D'
+    'HTTP_ACCEPT_LANGUAGE' => 'en-GB,en;q=0.9,en-US;q=0.8,ru-RU;q=0.7,ru;q=0.6,uz;q=0.5,tg;q=0.4,ug;q=0.3,tr;q=0.2,ky;q=0.1'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, br'
+    'HTTP_SEC_FETCH_DEST' => 'document'
+    'HTTP_SEC_FETCH_USER' => '?1'
+    'HTTP_SEC_FETCH_MODE' => 'navigate'
+    'HTTP_SEC_FETCH_SITE' => 'none'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_SEC_CH_UA_PLATFORM' => '\"Windows\"'
+    'HTTP_SEC_CH_UA_MOBILE' => '?0'
+    'HTTP_SEC_CH_UA' => '\"Google Chrome\";v=\"107\", \"Chromium\";v=\"107\", \"Not=A?Brand\";v=\"24\"'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_HOST' => 'localhost:8014'
+    'REDIRECT_STATUS' => '200'
+    'SERVER_NAME' => 'localhost'
+    'SERVER_PORT' => '801'
+    'SERVER_ADDR' => '172.18.0.4'
+    'REMOTE_PORT' => '52558'
+    'REMOTE_ADDR' => '172.18.0.1'
+    'SERVER_SOFTWARE' => 'nginx/1.19.6'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'REQUEST_SCHEME' => 'http'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'DOCUMENT_ROOT' => '/var/www/html/frontend/web'
+    'DOCUMENT_URI' => '/index.php'
+    'REQUEST_URI' => '/'
+    'SCRIPT_NAME' => '/index.php'
+    'CONTENT_LENGTH' => ''
+    'CONTENT_TYPE' => ''
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => ''
+    'SCRIPT_FILENAME' => '/var/www/html/frontend/web/index.php'
+    'FCGI_ROLE' => 'RESPONDER'
+    'PHP_SELF' => '/index.php'
+    'REQUEST_TIME_FLOAT' => 1667215861.9833
+    'REQUEST_TIME' => 1667215861
+]
+2022-10-31 14:31:10 [172.18.0.1][-][-][warning][yii\debug\Module::checkAccess] Access to debugger is denied due to IP address restriction. The requesting IP address is 172.18.0.1
+    in /var/www/html/frontend/views/layouts/main.php:80
+    in /var/www/html/frontend/controllers/SiteController.php:146
+2022-10-31 14:31:10 [172.18.0.1][-][-][warning][yii\debug\Module::checkAccess] Access to debugger is denied due to IP address restriction. The requesting IP address is 172.18.0.1
+2022-10-31 14:31:09 [172.18.0.1][-][-][info][application] $_GET = [
+    'r' => 'site/about'
+]
+
+$_POST = []
+
+$_FILES = []
+
+$_COOKIE = [
+    'Phpstorm-b9adccb0' => '59515f86-5102-43fe-a945-7b825f177028'
+    'remember_web_59ba36addc2b2f9401580f014c7f58ea4e30989d' => 'eyJpdiI6IkU2MGlPVWIxRTlVekhDMHpYakZJcEE9PSIsInZhbHVlIjoieit3K2pKUU1qL1FKQzdBSGpjZFVlRUhTOFNoK1dZQTFhMFN4SVluRnBBdXdDUC81eDc5eVBhR1R3R2tERTU0djJROTk4Z0cyS2FubHgzdVV2eUh2YTNUY2hMeFBtZE1WbXlFd0FBV2J2bVVSazVQTXBwQi9ubnJudkhCaUdyalJPOG4vMTdHTFRobW90dDRKRGZZcXh5YmRmK3JnRDJvL1lnczJ0N0o4RDRRSURJQ0tCYzlldGIxZHIxYTVCU2ZqWkJkaDU3L3dGbWI5bWQyNjNkSlZMRzE5L1orU2xNb28waWpYQm94VEg1az0iLCJtYWMiOiIyNDllOWEwYjEzMDFmYTA4MjZiNjUxNTM0MDU2NmVmOWVkMTk4MDdiMmRmYWQzNjRlZmJkZjNiYTFmMmYwYTlkIiwidGFnIjoiIn0='
+    'advanced-frontend' => 'evijfvmja6f2iqv6bkj5rh0vnf'
+    '_csrf-frontend' => 'e564bf1bcd455e811bed7735ed567349e7549c1dbaba2a0717bef26106969ffba:2:{i:0;s:14:\"_csrf-frontend\";i:1;s:32:\"25pILhdrOGE2e0uqQkFuqhL1QtQj7lDp\";}'
+]
+
+$_SESSION = [
+    '__flash' => []
+]
+
+$_SERVER = [
+    'HOSTNAME' => '5358c4f2154f'
+    'PHP_INI_DIR' => '/usr/local/etc/php'
+    'HOME' => '/var/www'
+    'PHP_LDFLAGS' => '-Wl,-O1 -pie'
+    'PHP_CFLAGS' => '-fstack-protector-strong -fpic -fpie -O2 -D_LARGEFILE_SOURCE -D_FILE_OFFSET_BITS=64'
+    'PHP_VERSION' => '7.4.32'
+    'GPG_KEYS' => '42670A7FE4D0441C8E4632349E4FDC074A4EF02D 5A52880781F755608BF815FC910DEB46F53EA312'
+    'PHP_CPPFLAGS' => '-fstack-protector-strong -fpic -fpie -O2 -D_LARGEFILE_SOURCE -D_FILE_OFFSET_BITS=64'
+    'PHP_ASC_URL' => 'https://www.php.net/distributions/php-7.4.32.tar.xz.asc'
+    'PHP_URL' => 'https://www.php.net/distributions/php-7.4.32.tar.xz'
+    'PATH' => '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'
+    'PHPIZE_DEPS' => 'autoconf 		dpkg-dev 		file 		g++ 		gcc 		libc-dev 		make 		pkg-config 		re2c'
+    'PWD' => '/var/www/html'
+    'PHP_SHA256' => '323332c991e8ef30b1d219cb10f5e30f11b5f319ce4c6642a5470d75ade7864a'
+    'USER' => 'www-data'
+    'HTTP_COOKIE' => 'Phpstorm-b9adccb0=59515f86-5102-43fe-a945-7b825f177028; remember_web_59ba36addc2b2f9401580f014c7f58ea4e30989d=eyJpdiI6IkU2MGlPVWIxRTlVekhDMHpYakZJcEE9PSIsInZhbHVlIjoieit3K2pKUU1qL1FKQzdBSGpjZFVlRUhTOFNoK1dZQTFhMFN4SVluRnBBdXdDUC81eDc5eVBhR1R3R2tERTU0djJROTk4Z0cyS2FubHgzdVV2eUh2YTNUY2hMeFBtZE1WbXlFd0FBV2J2bVVSazVQTXBwQi9ubnJudkhCaUdyalJPOG4vMTdHTFRobW90dDRKRGZZcXh5YmRmK3JnRDJvL1lnczJ0N0o4RDRRSURJQ0tCYzlldGIxZHIxYTVCU2ZqWkJkaDU3L3dGbWI5bWQyNjNkSlZMRzE5L1orU2xNb28waWpYQm94VEg1az0iLCJtYWMiOiIyNDllOWEwYjEzMDFmYTA4MjZiNjUxNTM0MDU2NmVmOWVkMTk4MDdiMmRmYWQzNjRlZmJkZjNiYTFmMmYwYTlkIiwidGFnIjoiIn0%3D; advanced-frontend=evijfvmja6f2iqv6bkj5rh0vnf; _csrf-frontend=e564bf1bcd455e811bed7735ed567349e7549c1dbaba2a0717bef26106969ffba%3A2%3A%7Bi%3A0%3Bs%3A14%3A%22_csrf-frontend%22%3Bi%3A1%3Bs%3A32%3A%2225pILhdrOGE2e0uqQkFuqhL1QtQj7lDp%22%3B%7D'
+    'HTTP_ACCEPT_LANGUAGE' => 'en-GB,en;q=0.9,en-US;q=0.8,ru-RU;q=0.7,ru;q=0.6,uz;q=0.5,tg;q=0.4,ug;q=0.3,tr;q=0.2,ky;q=0.1'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, br'
+    'HTTP_REFERER' => 'http://localhost:8014/'
+    'HTTP_SEC_FETCH_DEST' => 'document'
+    'HTTP_SEC_FETCH_USER' => '?1'
+    'HTTP_SEC_FETCH_MODE' => 'navigate'
+    'HTTP_SEC_FETCH_SITE' => 'same-origin'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_SEC_CH_UA_PLATFORM' => '\"Windows\"'
+    'HTTP_SEC_CH_UA_MOBILE' => '?0'
+    'HTTP_SEC_CH_UA' => '\"Google Chrome\";v=\"107\", \"Chromium\";v=\"107\", \"Not=A?Brand\";v=\"24\"'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_HOST' => 'localhost:8014'
+    'REDIRECT_STATUS' => '200'
+    'SERVER_NAME' => 'localhost'
+    'SERVER_PORT' => '801'
+    'SERVER_ADDR' => '172.18.0.4'
+    'REMOTE_PORT' => '52566'
+    'REMOTE_ADDR' => '172.18.0.1'
+    'SERVER_SOFTWARE' => 'nginx/1.19.6'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'REQUEST_SCHEME' => 'http'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'DOCUMENT_ROOT' => '/var/www/html/frontend/web'
+    'DOCUMENT_URI' => '/index.php'
+    'REQUEST_URI' => '/index.php?r=site%2Fabout'
+    'SCRIPT_NAME' => '/index.php'
+    'CONTENT_LENGTH' => ''
+    'CONTENT_TYPE' => ''
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => 'r=site%2Fabout'
+    'SCRIPT_FILENAME' => '/var/www/html/frontend/web/index.php'
+    'FCGI_ROLE' => 'RESPONDER'
+    'PHP_SELF' => '/index.php'
+    'REQUEST_TIME_FLOAT' => 1667215869.6854
+    'REQUEST_TIME' => 1667215869
+]
+2022-10-31 14:31:11 [172.18.0.1][-][evijfvmja6f2iqv6bkj5rh0vnf][error][yii\base\InvalidConfigException] yii\base\InvalidConfigException: Either GD PHP extension with FreeType support or ImageMagick PHP extension with PNG support is required. in /var/www/html/vendor/yiisoft/yii2/captcha/Captcha.php:175
+Stack trace:
+#0 /var/www/html/vendor/yiisoft/yii2/captcha/Captcha.php(94): yii\captcha\Captcha::checkRequirements()
+#1 /var/www/html/vendor/yiisoft/yii2/base/BaseObject.php(109): yii\captcha\Captcha->init()
+#2 [internal function]: yii\base\BaseObject->__construct(Array)
+#3 /var/www/html/vendor/yiisoft/yii2/di/Container.php(419): ReflectionClass->newInstanceArgs(Array)
+#4 /var/www/html/vendor/yiisoft/yii2/di/Container.php(170): yii\di\Container->build('yii\\captcha\\Cap...', Array, Array)
+#5 /var/www/html/vendor/yiisoft/yii2/BaseYii.php(365): yii\di\Container->get('yii\\captcha\\Cap...', Array, Array)
+#6 /var/www/html/vendor/yiisoft/yii2/base/Widget.php(143): yii\BaseYii::createObject(Array)
+#7 /var/www/html/vendor/yiisoft/yii2/widgets/ActiveField.php(795): yii\base\Widget::widget(Array)
+#8 /var/www/html/frontend/views/site/contact.php(34): yii\widgets\ActiveField->widget('yii\\captcha\\Cap...', Array)
+#9 /var/www/html/vendor/yiisoft/yii2/base/View.php(347): require('/var/www/html/f...')
+#10 /var/www/html/vendor/yiisoft/yii2/base/View.php(257): yii\base\View->renderPhpFile('/var/www/html/f...', Array)
+#11 /var/www/html/vendor/yiisoft/yii2/base/View.php(156): yii\base\View->renderFile('/var/www/html/f...', Array, Object(frontend\controllers\SiteController))
+#12 /var/www/html/vendor/yiisoft/yii2/base/Controller.php(407): yii\base\View->render('contact', Array, Object(frontend\controllers\SiteController))
+#13 /var/www/html/frontend/controllers/SiteController.php(135): yii\base\Controller->render('contact', Array)
+#14 [internal function]: frontend\controllers\SiteController->actionContact()
+#15 /var/www/html/vendor/yiisoft/yii2/base/InlineAction.php(57): call_user_func_array(Array, Array)
+#16 /var/www/html/vendor/yiisoft/yii2/base/Controller.php(178): yii\base\InlineAction->runWithParams(Array)
+#17 /var/www/html/vendor/yiisoft/yii2/base/Module.php(552): yii\base\Controller->runAction('contact', Array)
+#18 /var/www/html/vendor/yiisoft/yii2/web/Application.php(103): yii\base\Module->runAction('site/contact', Array)
+#19 /var/www/html/vendor/yiisoft/yii2/base/Application.php(384): yii\web\Application->handleRequest(Object(yii\web\Request))
+#20 /var/www/html/frontend/web/index.php(18): yii\base\Application->run()
+#21 {main}
+2022-10-31 14:31:11 [172.18.0.1][-][evijfvmja6f2iqv6bkj5rh0vnf][warning][yii\debug\Module::checkAccess] Access to debugger is denied due to IP address restriction. The requesting IP address is 172.18.0.1
+2022-10-31 14:31:11 [172.18.0.1][-][evijfvmja6f2iqv6bkj5rh0vnf][warning][yii\debug\Module::checkAccess] Access to debugger is denied due to IP address restriction. The requesting IP address is 172.18.0.1
+2022-10-31 14:31:10 [172.18.0.1][-][evijfvmja6f2iqv6bkj5rh0vnf][info][application] $_GET = [
+    'r' => 'site/contact'
+]
+
+$_POST = []
+
+$_FILES = []
+
+$_COOKIE = [
+    'Phpstorm-b9adccb0' => '59515f86-5102-43fe-a945-7b825f177028'
+    'remember_web_59ba36addc2b2f9401580f014c7f58ea4e30989d' => 'eyJpdiI6IkU2MGlPVWIxRTlVekhDMHpYakZJcEE9PSIsInZhbHVlIjoieit3K2pKUU1qL1FKQzdBSGpjZFVlRUhTOFNoK1dZQTFhMFN4SVluRnBBdXdDUC81eDc5eVBhR1R3R2tERTU0djJROTk4Z0cyS2FubHgzdVV2eUh2YTNUY2hMeFBtZE1WbXlFd0FBV2J2bVVSazVQTXBwQi9ubnJudkhCaUdyalJPOG4vMTdHTFRobW90dDRKRGZZcXh5YmRmK3JnRDJvL1lnczJ0N0o4RDRRSURJQ0tCYzlldGIxZHIxYTVCU2ZqWkJkaDU3L3dGbWI5bWQyNjNkSlZMRzE5L1orU2xNb28waWpYQm94VEg1az0iLCJtYWMiOiIyNDllOWEwYjEzMDFmYTA4MjZiNjUxNTM0MDU2NmVmOWVkMTk4MDdiMmRmYWQzNjRlZmJkZjNiYTFmMmYwYTlkIiwidGFnIjoiIn0='
+    'advanced-frontend' => 'evijfvmja6f2iqv6bkj5rh0vnf'
+    '_csrf-frontend' => 'e564bf1bcd455e811bed7735ed567349e7549c1dbaba2a0717bef26106969ffba:2:{i:0;s:14:\"_csrf-frontend\";i:1;s:32:\"25pILhdrOGE2e0uqQkFuqhL1QtQj7lDp\";}'
+]
+
+$_SESSION = [
+    '__flash' => []
+]
+
+$_SERVER = [
+    'HOSTNAME' => '5358c4f2154f'
+    'PHP_INI_DIR' => '/usr/local/etc/php'
+    'HOME' => '/var/www'
+    'PHP_LDFLAGS' => '-Wl,-O1 -pie'
+    'PHP_CFLAGS' => '-fstack-protector-strong -fpic -fpie -O2 -D_LARGEFILE_SOURCE -D_FILE_OFFSET_BITS=64'
+    'PHP_VERSION' => '7.4.32'
+    'GPG_KEYS' => '42670A7FE4D0441C8E4632349E4FDC074A4EF02D 5A52880781F755608BF815FC910DEB46F53EA312'
+    'PHP_CPPFLAGS' => '-fstack-protector-strong -fpic -fpie -O2 -D_LARGEFILE_SOURCE -D_FILE_OFFSET_BITS=64'
+    'PHP_ASC_URL' => 'https://www.php.net/distributions/php-7.4.32.tar.xz.asc'
+    'PHP_URL' => 'https://www.php.net/distributions/php-7.4.32.tar.xz'
+    'PATH' => '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'
+    'PHPIZE_DEPS' => 'autoconf 		dpkg-dev 		file 		g++ 		gcc 		libc-dev 		make 		pkg-config 		re2c'
+    'PWD' => '/var/www/html'
+    'PHP_SHA256' => '323332c991e8ef30b1d219cb10f5e30f11b5f319ce4c6642a5470d75ade7864a'
+    'USER' => 'www-data'
+    'HTTP_COOKIE' => 'Phpstorm-b9adccb0=59515f86-5102-43fe-a945-7b825f177028; remember_web_59ba36addc2b2f9401580f014c7f58ea4e30989d=eyJpdiI6IkU2MGlPVWIxRTlVekhDMHpYakZJcEE9PSIsInZhbHVlIjoieit3K2pKUU1qL1FKQzdBSGpjZFVlRUhTOFNoK1dZQTFhMFN4SVluRnBBdXdDUC81eDc5eVBhR1R3R2tERTU0djJROTk4Z0cyS2FubHgzdVV2eUh2YTNUY2hMeFBtZE1WbXlFd0FBV2J2bVVSazVQTXBwQi9ubnJudkhCaUdyalJPOG4vMTdHTFRobW90dDRKRGZZcXh5YmRmK3JnRDJvL1lnczJ0N0o4RDRRSURJQ0tCYzlldGIxZHIxYTVCU2ZqWkJkaDU3L3dGbWI5bWQyNjNkSlZMRzE5L1orU2xNb28waWpYQm94VEg1az0iLCJtYWMiOiIyNDllOWEwYjEzMDFmYTA4MjZiNjUxNTM0MDU2NmVmOWVkMTk4MDdiMmRmYWQzNjRlZmJkZjNiYTFmMmYwYTlkIiwidGFnIjoiIn0%3D; advanced-frontend=evijfvmja6f2iqv6bkj5rh0vnf; _csrf-frontend=e564bf1bcd455e811bed7735ed567349e7549c1dbaba2a0717bef26106969ffba%3A2%3A%7Bi%3A0%3Bs%3A14%3A%22_csrf-frontend%22%3Bi%3A1%3Bs%3A32%3A%2225pILhdrOGE2e0uqQkFuqhL1QtQj7lDp%22%3B%7D'
+    'HTTP_ACCEPT_LANGUAGE' => 'en-GB,en;q=0.9,en-US;q=0.8,ru-RU;q=0.7,ru;q=0.6,uz;q=0.5,tg;q=0.4,ug;q=0.3,tr;q=0.2,ky;q=0.1'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, br'
+    'HTTP_REFERER' => 'http://localhost:8014/index.php?r=site%2Fabout'
+    'HTTP_SEC_FETCH_DEST' => 'document'
+    'HTTP_SEC_FETCH_USER' => '?1'
+    'HTTP_SEC_FETCH_MODE' => 'navigate'
+    'HTTP_SEC_FETCH_SITE' => 'same-origin'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_SEC_CH_UA_PLATFORM' => '\"Windows\"'
+    'HTTP_SEC_CH_UA_MOBILE' => '?0'
+    'HTTP_SEC_CH_UA' => '\"Google Chrome\";v=\"107\", \"Chromium\";v=\"107\", \"Not=A?Brand\";v=\"24\"'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_HOST' => 'localhost:8014'
+    'REDIRECT_STATUS' => '200'
+    'SERVER_NAME' => 'localhost'
+    'SERVER_PORT' => '801'
+    'SERVER_ADDR' => '172.18.0.4'
+    'REMOTE_PORT' => '52572'
+    'REMOTE_ADDR' => '172.18.0.1'
+    'SERVER_SOFTWARE' => 'nginx/1.19.6'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'REQUEST_SCHEME' => 'http'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'DOCUMENT_ROOT' => '/var/www/html/frontend/web'
+    'DOCUMENT_URI' => '/index.php'
+    'REQUEST_URI' => '/index.php?r=site%2Fcontact'
+    'SCRIPT_NAME' => '/index.php'
+    'CONTENT_LENGTH' => ''
+    'CONTENT_TYPE' => ''
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => 'r=site%2Fcontact'
+    'SCRIPT_FILENAME' => '/var/www/html/frontend/web/index.php'
+    'FCGI_ROLE' => 'RESPONDER'
+    'PHP_SELF' => '/index.php'
+    'REQUEST_TIME_FLOAT' => 1667215870.79
+    'REQUEST_TIME' => 1667215870
+]
+2022-10-31 14:31:13 [172.18.0.1][-][-][warning][yii\debug\Module::checkAccess] Access to debugger is denied due to IP address restriction. The requesting IP address is 172.18.0.1
+    in /var/www/html/frontend/views/layouts/main.php:80
+    in /var/www/html/frontend/controllers/SiteController.php:146
+2022-10-31 14:31:13 [172.18.0.1][-][-][warning][yii\debug\Module::checkAccess] Access to debugger is denied due to IP address restriction. The requesting IP address is 172.18.0.1
+2022-10-31 14:31:12 [172.18.0.1][-][-][info][application] $_GET = [
+    'r' => 'site/about'
+]
+
+$_POST = []
+
+$_FILES = []
+
+$_COOKIE = [
+    'Phpstorm-b9adccb0' => '59515f86-5102-43fe-a945-7b825f177028'
+    'remember_web_59ba36addc2b2f9401580f014c7f58ea4e30989d' => 'eyJpdiI6IkU2MGlPVWIxRTlVekhDMHpYakZJcEE9PSIsInZhbHVlIjoieit3K2pKUU1qL1FKQzdBSGpjZFVlRUhTOFNoK1dZQTFhMFN4SVluRnBBdXdDUC81eDc5eVBhR1R3R2tERTU0djJROTk4Z0cyS2FubHgzdVV2eUh2YTNUY2hMeFBtZE1WbXlFd0FBV2J2bVVSazVQTXBwQi9ubnJudkhCaUdyalJPOG4vMTdHTFRobW90dDRKRGZZcXh5YmRmK3JnRDJvL1lnczJ0N0o4RDRRSURJQ0tCYzlldGIxZHIxYTVCU2ZqWkJkaDU3L3dGbWI5bWQyNjNkSlZMRzE5L1orU2xNb28waWpYQm94VEg1az0iLCJtYWMiOiIyNDllOWEwYjEzMDFmYTA4MjZiNjUxNTM0MDU2NmVmOWVkMTk4MDdiMmRmYWQzNjRlZmJkZjNiYTFmMmYwYTlkIiwidGFnIjoiIn0='
+    'advanced-frontend' => 'evijfvmja6f2iqv6bkj5rh0vnf'
+    '_csrf-frontend' => 'e564bf1bcd455e811bed7735ed567349e7549c1dbaba2a0717bef26106969ffba:2:{i:0;s:14:\"_csrf-frontend\";i:1;s:32:\"25pILhdrOGE2e0uqQkFuqhL1QtQj7lDp\";}'
+]
+
+$_SESSION = [
+    '__flash' => []
+]
+
+$_SERVER = [
+    'HOSTNAME' => '5358c4f2154f'
+    'PHP_INI_DIR' => '/usr/local/etc/php'
+    'HOME' => '/var/www'
+    'PHP_LDFLAGS' => '-Wl,-O1 -pie'
+    'PHP_CFLAGS' => '-fstack-protector-strong -fpic -fpie -O2 -D_LARGEFILE_SOURCE -D_FILE_OFFSET_BITS=64'
+    'PHP_VERSION' => '7.4.32'
+    'GPG_KEYS' => '42670A7FE4D0441C8E4632349E4FDC074A4EF02D 5A52880781F755608BF815FC910DEB46F53EA312'
+    'PHP_CPPFLAGS' => '-fstack-protector-strong -fpic -fpie -O2 -D_LARGEFILE_SOURCE -D_FILE_OFFSET_BITS=64'
+    'PHP_ASC_URL' => 'https://www.php.net/distributions/php-7.4.32.tar.xz.asc'
+    'PHP_URL' => 'https://www.php.net/distributions/php-7.4.32.tar.xz'
+    'PATH' => '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'
+    'PHPIZE_DEPS' => 'autoconf 		dpkg-dev 		file 		g++ 		gcc 		libc-dev 		make 		pkg-config 		re2c'
+    'PWD' => '/var/www/html'
+    'PHP_SHA256' => '323332c991e8ef30b1d219cb10f5e30f11b5f319ce4c6642a5470d75ade7864a'
+    'USER' => 'www-data'
+    'HTTP_COOKIE' => 'Phpstorm-b9adccb0=59515f86-5102-43fe-a945-7b825f177028; remember_web_59ba36addc2b2f9401580f014c7f58ea4e30989d=eyJpdiI6IkU2MGlPVWIxRTlVekhDMHpYakZJcEE9PSIsInZhbHVlIjoieit3K2pKUU1qL1FKQzdBSGpjZFVlRUhTOFNoK1dZQTFhMFN4SVluRnBBdXdDUC81eDc5eVBhR1R3R2tERTU0djJROTk4Z0cyS2FubHgzdVV2eUh2YTNUY2hMeFBtZE1WbXlFd0FBV2J2bVVSazVQTXBwQi9ubnJudkhCaUdyalJPOG4vMTdHTFRobW90dDRKRGZZcXh5YmRmK3JnRDJvL1lnczJ0N0o4RDRRSURJQ0tCYzlldGIxZHIxYTVCU2ZqWkJkaDU3L3dGbWI5bWQyNjNkSlZMRzE5L1orU2xNb28waWpYQm94VEg1az0iLCJtYWMiOiIyNDllOWEwYjEzMDFmYTA4MjZiNjUxNTM0MDU2NmVmOWVkMTk4MDdiMmRmYWQzNjRlZmJkZjNiYTFmMmYwYTlkIiwidGFnIjoiIn0%3D; advanced-frontend=evijfvmja6f2iqv6bkj5rh0vnf; _csrf-frontend=e564bf1bcd455e811bed7735ed567349e7549c1dbaba2a0717bef26106969ffba%3A2%3A%7Bi%3A0%3Bs%3A14%3A%22_csrf-frontend%22%3Bi%3A1%3Bs%3A32%3A%2225pILhdrOGE2e0uqQkFuqhL1QtQj7lDp%22%3B%7D'
+    'HTTP_ACCEPT_LANGUAGE' => 'en-GB,en;q=0.9,en-US;q=0.8,ru-RU;q=0.7,ru;q=0.6,uz;q=0.5,tg;q=0.4,ug;q=0.3,tr;q=0.2,ky;q=0.1'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, br'
+    'HTTP_REFERER' => 'http://localhost:8014/'
+    'HTTP_SEC_FETCH_DEST' => 'document'
+    'HTTP_SEC_FETCH_MODE' => 'navigate'
+    'HTTP_SEC_FETCH_SITE' => 'same-origin'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_SEC_CH_UA_PLATFORM' => '\"Windows\"'
+    'HTTP_SEC_CH_UA_MOBILE' => '?0'
+    'HTTP_SEC_CH_UA' => '\"Google Chrome\";v=\"107\", \"Chromium\";v=\"107\", \"Not=A?Brand\";v=\"24\"'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_HOST' => 'localhost:8014'
+    'REDIRECT_STATUS' => '200'
+    'SERVER_NAME' => 'localhost'
+    'SERVER_PORT' => '801'
+    'SERVER_ADDR' => '172.18.0.4'
+    'REMOTE_PORT' => '52572'
+    'REMOTE_ADDR' => '172.18.0.1'
+    'SERVER_SOFTWARE' => 'nginx/1.19.6'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'REQUEST_SCHEME' => 'http'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'DOCUMENT_ROOT' => '/var/www/html/frontend/web'
+    'DOCUMENT_URI' => '/index.php'
+    'REQUEST_URI' => '/index.php?r=site%2Fabout'
+    'SCRIPT_NAME' => '/index.php'
+    'CONTENT_LENGTH' => ''
+    'CONTENT_TYPE' => ''
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => 'r=site%2Fabout'
+    'SCRIPT_FILENAME' => '/var/www/html/frontend/web/index.php'
+    'FCGI_ROLE' => 'RESPONDER'
+    'PHP_SELF' => '/index.php'
+    'REQUEST_TIME_FLOAT' => 1667215872.939
+    'REQUEST_TIME' => 1667215872
+]
+2022-10-31 14:31:14 [172.18.0.1][-][-][warning][yii\debug\Module::checkAccess] Access to debugger is denied due to IP address restriction. The requesting IP address is 172.18.0.1
+    in /var/www/html/frontend/views/layouts/main.php:80
+    in /var/www/html/frontend/controllers/SiteController.php:78
+2022-10-31 14:31:14 [172.18.0.1][-][-][warning][yii\debug\Module::checkAccess] Access to debugger is denied due to IP address restriction. The requesting IP address is 172.18.0.1
+2022-10-31 14:31:14 [172.18.0.1][-][-][info][application] $_GET = [
+    'r' => 'site/index'
+]
+
+$_POST = []
+
+$_FILES = []
+
+$_COOKIE = [
+    'Phpstorm-b9adccb0' => '59515f86-5102-43fe-a945-7b825f177028'
+    'remember_web_59ba36addc2b2f9401580f014c7f58ea4e30989d' => 'eyJpdiI6IkU2MGlPVWIxRTlVekhDMHpYakZJcEE9PSIsInZhbHVlIjoieit3K2pKUU1qL1FKQzdBSGpjZFVlRUhTOFNoK1dZQTFhMFN4SVluRnBBdXdDUC81eDc5eVBhR1R3R2tERTU0djJROTk4Z0cyS2FubHgzdVV2eUh2YTNUY2hMeFBtZE1WbXlFd0FBV2J2bVVSazVQTXBwQi9ubnJudkhCaUdyalJPOG4vMTdHTFRobW90dDRKRGZZcXh5YmRmK3JnRDJvL1lnczJ0N0o4RDRRSURJQ0tCYzlldGIxZHIxYTVCU2ZqWkJkaDU3L3dGbWI5bWQyNjNkSlZMRzE5L1orU2xNb28waWpYQm94VEg1az0iLCJtYWMiOiIyNDllOWEwYjEzMDFmYTA4MjZiNjUxNTM0MDU2NmVmOWVkMTk4MDdiMmRmYWQzNjRlZmJkZjNiYTFmMmYwYTlkIiwidGFnIjoiIn0='
+    'advanced-frontend' => 'evijfvmja6f2iqv6bkj5rh0vnf'
+    '_csrf-frontend' => 'e564bf1bcd455e811bed7735ed567349e7549c1dbaba2a0717bef26106969ffba:2:{i:0;s:14:\"_csrf-frontend\";i:1;s:32:\"25pILhdrOGE2e0uqQkFuqhL1QtQj7lDp\";}'
+]
+
+$_SESSION = [
+    '__flash' => []
+]
+
+$_SERVER = [
+    'HOSTNAME' => '5358c4f2154f'
+    'PHP_INI_DIR' => '/usr/local/etc/php'
+    'HOME' => '/var/www'
+    'PHP_LDFLAGS' => '-Wl,-O1 -pie'
+    'PHP_CFLAGS' => '-fstack-protector-strong -fpic -fpie -O2 -D_LARGEFILE_SOURCE -D_FILE_OFFSET_BITS=64'
+    'PHP_VERSION' => '7.4.32'
+    'GPG_KEYS' => '42670A7FE4D0441C8E4632349E4FDC074A4EF02D 5A52880781F755608BF815FC910DEB46F53EA312'
+    'PHP_CPPFLAGS' => '-fstack-protector-strong -fpic -fpie -O2 -D_LARGEFILE_SOURCE -D_FILE_OFFSET_BITS=64'
+    'PHP_ASC_URL' => 'https://www.php.net/distributions/php-7.4.32.tar.xz.asc'
+    'PHP_URL' => 'https://www.php.net/distributions/php-7.4.32.tar.xz'
+    'PATH' => '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'
+    'PHPIZE_DEPS' => 'autoconf 		dpkg-dev 		file 		g++ 		gcc 		libc-dev 		make 		pkg-config 		re2c'
+    'PWD' => '/var/www/html'
+    'PHP_SHA256' => '323332c991e8ef30b1d219cb10f5e30f11b5f319ce4c6642a5470d75ade7864a'
+    'USER' => 'www-data'
+    'HTTP_COOKIE' => 'Phpstorm-b9adccb0=59515f86-5102-43fe-a945-7b825f177028; remember_web_59ba36addc2b2f9401580f014c7f58ea4e30989d=eyJpdiI6IkU2MGlPVWIxRTlVekhDMHpYakZJcEE9PSIsInZhbHVlIjoieit3K2pKUU1qL1FKQzdBSGpjZFVlRUhTOFNoK1dZQTFhMFN4SVluRnBBdXdDUC81eDc5eVBhR1R3R2tERTU0djJROTk4Z0cyS2FubHgzdVV2eUh2YTNUY2hMeFBtZE1WbXlFd0FBV2J2bVVSazVQTXBwQi9ubnJudkhCaUdyalJPOG4vMTdHTFRobW90dDRKRGZZcXh5YmRmK3JnRDJvL1lnczJ0N0o4RDRRSURJQ0tCYzlldGIxZHIxYTVCU2ZqWkJkaDU3L3dGbWI5bWQyNjNkSlZMRzE5L1orU2xNb28waWpYQm94VEg1az0iLCJtYWMiOiIyNDllOWEwYjEzMDFmYTA4MjZiNjUxNTM0MDU2NmVmOWVkMTk4MDdiMmRmYWQzNjRlZmJkZjNiYTFmMmYwYTlkIiwidGFnIjoiIn0%3D; advanced-frontend=evijfvmja6f2iqv6bkj5rh0vnf; _csrf-frontend=e564bf1bcd455e811bed7735ed567349e7549c1dbaba2a0717bef26106969ffba%3A2%3A%7Bi%3A0%3Bs%3A14%3A%22_csrf-frontend%22%3Bi%3A1%3Bs%3A32%3A%2225pILhdrOGE2e0uqQkFuqhL1QtQj7lDp%22%3B%7D'
+    'HTTP_ACCEPT_LANGUAGE' => 'en-GB,en;q=0.9,en-US;q=0.8,ru-RU;q=0.7,ru;q=0.6,uz;q=0.5,tg;q=0.4,ug;q=0.3,tr;q=0.2,ky;q=0.1'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, br'
+    'HTTP_REFERER' => 'http://localhost:8014/index.php?r=site%2Fabout'
+    'HTTP_SEC_FETCH_DEST' => 'document'
+    'HTTP_SEC_FETCH_USER' => '?1'
+    'HTTP_SEC_FETCH_MODE' => 'navigate'
+    'HTTP_SEC_FETCH_SITE' => 'same-origin'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_SEC_CH_UA_PLATFORM' => '\"Windows\"'
+    'HTTP_SEC_CH_UA_MOBILE' => '?0'
+    'HTTP_SEC_CH_UA' => '\"Google Chrome\";v=\"107\", \"Chromium\";v=\"107\", \"Not=A?Brand\";v=\"24\"'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_HOST' => 'localhost:8014'
+    'REDIRECT_STATUS' => '200'
+    'SERVER_NAME' => 'localhost'
+    'SERVER_PORT' => '801'
+    'SERVER_ADDR' => '172.18.0.4'
+    'REMOTE_PORT' => '52572'
+    'REMOTE_ADDR' => '172.18.0.1'
+    'SERVER_SOFTWARE' => 'nginx/1.19.6'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'REQUEST_SCHEME' => 'http'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'DOCUMENT_ROOT' => '/var/www/html/frontend/web'
+    'DOCUMENT_URI' => '/index.php'
+    'REQUEST_URI' => '/index.php?r=site%2Findex'
+    'SCRIPT_NAME' => '/index.php'
+    'CONTENT_LENGTH' => ''
+    'CONTENT_TYPE' => ''
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => 'r=site%2Findex'
+    'SCRIPT_FILENAME' => '/var/www/html/frontend/web/index.php'
+    'FCGI_ROLE' => 'RESPONDER'
+    'PHP_SELF' => '/index.php'
+    'REQUEST_TIME_FLOAT' => 1667215874.6329
+    'REQUEST_TIME' => 1667215874
+]

@@ -1,0 +1,149 @@
+certbot_admin_email: kirillkukarcev@gmail.com
+certbot_create_if_missing: true
+certbot_certs:
+  - domains:
+      - prod.time-to-exchange.ru
+      - api.time-to-exchange.ru
+      - web.time-to-exchange.ru
+      - web.prod.time-to-exchange.ru
+      - api.prod.time-to-exchange.ru
+nginx_vhosts:
+    - listen: "80"
+      server_name: "prod.time-to-exchange.ru"
+      return: "301 https://web.time-to-exchange.ru$request_uri"
+      nginx_error_log: "/var/log/nginx/prod.time-to-exchange.ru.80.log warn"
+      nginx_access_log: "/var/log/nginx/prod.time-to-exchange.ru.80.log main buffer=16k flush=2m"
+      filename: "prod.time-to-exchange.ru.80.conf"
+    - listen: "80"
+      server_name: "api.time-to-exchange.ru api.prod.time-to-exchange.ru"
+      return: "301 https://api.time-to-exchange.ru$request_uri"
+      nginx_error_log: "/var/log/nginx/api.time-to-exchange.ru.80.log warn"
+      nginx_access_log: "/var/log/nginx/api.time-to-exchange.ru.80.log main buffer=16k flush=2m"
+      filename: "api.time-to-exchange.ru.80.conf"
+    - listen: "80"
+      server_name: "web.time-to-exchange.ru web.prod.time-to-exchange.ru"
+      return: "301 https://web.time-to-exchange.ru$request_uri"
+      nginx_error_log: "/var/log/nginx/web.time-to-exchange.ru.80.log warn"
+      nginx_access_log: "/var/log/nginx/web.time-to-exchange.ru.80.log main buffer=16k flush=2m"
+      filename: "web.time-to-exchange.ru.80.conf"
+    - listen: "443 ssl http2"
+      server_name: "api.time-to-exchange.ru api.prod.time-to-exchange.ru"
+      root: "{{ document_root }}/api/web"
+      index: "index.php"
+      state: "present"
+      template: "{{ nginx_vhost_template }}"
+      filename: "api.time-to-exchange.ru.443.conf"
+      nginx_error_log: "/var/log/nginx/api.time-to-exchange.ru.443.log warn"
+      nginx_access_log: "/var/log/nginx/api.time-to-exchange.ru.443.log main buffer=16k flush=2m"
+      extra_parameters: |
+
+        location ~* \.(jpg|jpeg|png|gif|ico|css|js|js.map)$ {
+          expires -1;
+        }
+
+
+        location / {
+          try_files $uri $uri/ /index.php?$query_string;
+        }
+
+        # allow execute all php files
+        location ~ \.php$ {
+            try_files $uri =404;
+            fastcgi_split_path_info ^(.+\.php)(/.+)$;
+            fastcgi_pass unix:/var/run/php/php-fpm.sock;
+            fastcgi_index /index.php;
+            include fastcgi_params;
+            fastcgi_split_path_info       ^(.+\.php)(/.+)$;
+            fastcgi_param PATH_INFO       $fastcgi_path_info;
+            fastcgi_param PATH_TRANSLATED $realpath_root$fastcgi_path_info;
+            fastcgi_param SCRIPT_FILENAME $realpath_root$fastcgi_script_name;
+            fastcgi_param DOCUMENT_ROOT   $realpath_root;
+        }
+
+        # turn off cache
+        location ~* ^.+\.(js|css)$ {
+            expires -1;
+            sendfile off;
+        }
+
+        # disallow access to apache configs
+        location ~ /\.ht {
+            deny all;
+        }
+
+        # disallow access to git configs path
+        location ~ /\.git {
+            deny all;
+        }
+
+        # disallow access to .env file
+        location ~ /\.env {
+            deny all;
+        }
+
+
+
+        ssl_certificate     /etc/letsencrypt/live/prod.time-to-exchange.ru/fullchain.pem;
+        ssl_certificate_key /etc/letsencrypt/live/prod.time-to-exchange.ru/privkey.pem;
+        ssl_protocols       TLSv1.1 TLSv1.2;
+        ssl_ciphers         HIGH:!aNULL:!MD5;
+    - listen: "443 ssl http2"
+      server_name: "web.time-to-exchange.ru web.prod.time-to-exchange.ru"
+      root: "{{ document_root }}/backend/web"
+      index: "index.php"
+      state: "present"
+      template: "{{ nginx_vhost_template }}"
+      filename: "web.time-to-exchange.ru.443.conf"
+      nginx_error_log: "/var/log/nginx/web.time-to-exchange.ru.443.log warn"
+      nginx_access_log: "/var/log/nginx/web.time-to-exchange.ru.443.log main buffer=16k flush=2m"
+      extra_parameters: |
+
+        location ~* \.(jpg|jpeg|png|gif|ico|css|js|js.map)$ {
+          expires -1;
+        }
+
+
+        location / {
+          try_files $uri $uri/ /index.php?$query_string;
+        }
+
+        # allow execute all php files
+        location ~ \.php$ {
+            try_files $uri =404;
+            fastcgi_split_path_info ^(.+\.php)(/.+)$;
+            fastcgi_pass unix:/var/run/php/php-fpm.sock;
+            fastcgi_index /index.php;
+            include fastcgi_params;
+            fastcgi_split_path_info       ^(.+\.php)(/.+)$;
+            fastcgi_param PATH_INFO       $fastcgi_path_info;
+            fastcgi_param PATH_TRANSLATED $realpath_root$fastcgi_path_info;
+            fastcgi_param SCRIPT_FILENAME $realpath_root$fastcgi_script_name;
+            fastcgi_param DOCUMENT_ROOT   $realpath_root;
+        }
+
+        # turn off cache
+        location ~* ^.+\.(js|css)$ {
+            expires -1;
+            sendfile off;
+        }
+
+        # disallow access to apache configs
+        location ~ /\.ht {
+            deny all;
+        }
+
+        # disallow access to git configs path
+        location ~ /\.git {
+            deny all;
+        }
+
+        # disallow access to .env file
+        location ~ /\.env {
+            deny all;
+        }
+
+
+        ssl_certificate     /etc/letsencrypt/live/prod.time-to-exchange.ru/fullchain.pem;
+        ssl_certificate_key /etc/letsencrypt/live/prod.time-to-exchange.ru/privkey.pem;
+        ssl_protocols       TLSv1.1 TLSv1.2;
+        ssl_ciphers         HIGH:!aNULL:!MD5;

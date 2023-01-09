@@ -1,0 +1,5 @@
+- hosts: gitlab_runners
+  become: true
+  roles:
+    - { role: geerlingguy.docker }
+    - { role: riemers.gitlab-runner }

@@ -1,0 +1,218 @@
+include:
+  - "/.gitlab/.templates.yml"
+
+variables:
+  MYSQL_VERSION: "8.0"
+
+  TIME_TO_EXCHANGE_APP_CONTEXT: ${CI_PROJECT_DIR}
+
+stages:
+  - test
+  - build
+  - migration_pre
+  - migration
+  - migration_post
+  - deploy
+
+dependencies:
+  stage: .pre
+  variables:
+    CONTEXT: ${TIME_TO_EXCHANGE_APP_CONTEXT}
+  extends: 
+    - .install_deps
+    - .php_cache
+
+test_migration:
+  services:
+    - mysql:${MYSQL_VERSION}
+  stage: test
+  variables:
+    CONTEXT: ${TIME_TO_EXCHANGE_APP_CONTEXT}
+    DB_DSN: mysql:host=mysql;dbname=time-to-exchange
+    DB_USERNAME: root
+    DB_PASSWORD: mysql
+    DB_CHARSET: utf8
+    DB_COLLATION: utf8_unicode_ci
+    MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
+    MYSQL_DATABASE: time-to-exchange
+  extends:
+    - .migration
+    - .php_cache
+
+test_backup:
+  when: manual
+  services:
+    - mysql:${MYSQL_VERSION}
+  stage: test
+  variables:
+    DB_USER: root
+    DB_PASS: mysql
+    DB_NAMES: time-to-exchange
+    MYSQL_ROOT_PASSWORD: ${DB_PASS}
+    MYSQL_DATABASE: time-to-exchange
+  extends:
+    - .mysql_backup
+
+backup_before_migration:
+  stage: migration_pre
+  extends:
+    - .mysql_backup
+    - .on_migration_changes
+  only:
+    refs:
+      - branches
+      - tags
+  except:
+    refs:
+      - main
+      - development
+  environment:
+    name: migration/$CI_COMMIT_REF_SLUG/backup
+  resource_group: migration/$CI_COMMIT_REF_SLUG/backup
+
+backup_before_migration_dev:
+  stage: migration_pre
+  extends:
+    - .mysql_backup
+    - .on_migration_changes
+    - .on_development
+  environment:
+    name: migration/development
+  resource_group: migration/development
+
+backup_before_migration_prod:
+  stage: migration_pre
+  extends:
+    - .mysql_backup
+    - .on_migration_changes
+    - .on_production
+  environment:
+    name: migration/production
+  resource_group: migration/production
+
+run_migration:
+  stage: migration
+  variables:
+    CONTEXT: ${TIME_TO_EXCHANGE_APP_CONTEXT}
+  extends:
+    - .migration
+    - .php_cache
+    - .on_migration_changes
+  environment:
+    name: migration/$CI_COMMIT_REF_SLUG
+  resource_group: migration/$CI_COMMIT_REF_SLUG
+  only:
+    refs:
+      - branches
+      - tags
+  except:
+    refs:
+      - main
+      - development
+
+run_migration_dev:
+  stage: migration
+  variables:
+    CONTEXT: ${TIME_TO_EXCHANGE_APP_CONTEXT}
+  extends:
+    - .migration
+    - .php_cache
+    - .on_development
+  environment:
+    name: migration/development
+  resource_group: migration/development
+
+run_migration_prod:
+  stage: migration
+  variables:
+    CONTEXT: ${TIME_TO_EXCHANGE_APP_CONTEXT}
+  extends:
+    - .migration
+    - .php_cache
+    - .on_production
+  environment:
+    name: migration/production
+  resource_group: migration/production
+
+ansible-deploy-feature-to-dev:
+  stage: deploy
+  when: manual
+  extends:
+    - .run_ansible_playbook
+  variables:
+    ANSIBLE_PLAYBOOK_PATH: ${CI_PROJECT_DIR}/ansible/time-to-exchange.yml
+    ANSIBLE_INVENTORY_PATH: ${CI_PROJECT_DIR}/ansible/inventory/dev/hosts
+    ANSIBLE_REQUIREMENTS_FILE: ${CI_PROJECT_DIR}/ansible/requirements.yml
+  environment: deploy/development
+  resource_group: deploy/development
+  only:
+    refs:
+      - branches
+      - tags
+  except:
+    refs:
+      - main
+      - development
+
+
+ansible-deploy-dev:
+  stage: deploy
+  extends:
+    - .run_ansible_playbook
+    - .on_development
+  variables:
+    ANSIBLE_PLAYBOOK_PATH: ${CI_PROJECT_DIR}/ansible/time-to-exchange.yml
+    ANSIBLE_INVENTORY_PATH: ${CI_PROJECT_DIR}/ansible/inventory/dev/hosts
+    ANSIBLE_REQUIREMENTS_FILE: ${CI_PROJECT_DIR}/ansible/requirements.yml
+  environment: deploy/development
+  resource_group: deploy/development
+
+ansible-deploy-prod:
+  stage: deploy
+  extends:
+    - .run_ansible_playbook
+    - .on_production
+  variables:
+    ANSIBLE_PLAYBOOK_PATH: ${CI_PROJECT_DIR}/ansible/time-to-exchange.yml
+    ANSIBLE_INVENTORY_PATH: ${CI_PROJECT_DIR}/ansible/inventory/prod/hosts
+    ANSIBLE_REQUIREMENTS_FILE: ${CI_PROJECT_DIR}/ansible/requirements.yml
+  environment: deploy/production
+  resource_group: deploy/production
+
+
+deploy-to-netimob:
+  stage: deploy
+  environment:
+    name: dev/deploy-netimob
+  only:
+    - dev
+  script:
+    - umask 0002
+    - sudo chown -R gitlab-runner:www-data /var/www/tcardapi-dev
+    - rsync -az --delete --exclude public/content/* --exclude runtime/* . /var/www/tcardapi-dev
+    - cp -f $env /var/www/tcardapi-dev/app/.env
+    - cd /var/www/tcardapi-dev/app; composer install
+    - cd /var/www/tcardapi-dev/app; php console.php migrate -n -v
+    - cd /var/www/tcardapi-dev/app; php console.php admin:create
+    - sudo chown -R www-data:www-data /var/www/tcardapi-dev
+
+
+
+deploy-to-tcard:
+  stage: deploy
+  when: manual
+  tags:
+    - prod
+  environment:
+    name: prod/deploy-tcard
+  only:
+    - release
+  script:
+    - umask 0002
+    - sudo chown -R gitlab-runner:www-data /var/www/tcardapi
+    - rsync -az --delete --exclude public/content/* --exclude runtime/* . /var/www/tcardapi
+    - cp -f $env /var/www/tcardapi/app/.env
+    - cd /var/www/tcardapi/app; composer install
+    - cd /var/www/tcardapi/app; php console.php migrate -n -v
+    - cd /var/www/tcardapi/app; php console.php admin:create
+    - sudo chown -R www-data:www-data /var/www/tcardapi

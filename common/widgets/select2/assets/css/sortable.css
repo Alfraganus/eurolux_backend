@@ -1,0 +1,36 @@
+.sortable-wrapper .select2-selection__choice {
+    display: none;
+}
+.expanded-elements {
+    display: inline-block;
+    width: 100%;
+    box-sizing: border-box;
+    vertical-align: top;
+    margin: 0;
+    padding: .7em 1em;
+    outline: none;
+    background: #f2f2ff;
+    border: 1px solid #e2e2ef;
+    cursor: pointer;
+}
+.expanded-elements-highlight {
+    display: inline-block;
+    width: 100%;
+    box-sizing: border-box;
+    margin: 0;
+    padding: .7em 1em;
+    outline: none;
+    background: #e2e2ef;
+    border: 1px dashed #cacaca;
+    content: ' ';
+}
+.expanded-buttons {
+    margin-left: 10px;
+}
+.expanded-buttons a {
+    margin-right: 5px;
+}
+
+.select2-search__field {
+    width: 300px !important;
+}

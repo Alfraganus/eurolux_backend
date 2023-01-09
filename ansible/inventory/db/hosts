@@ -1,0 +1,5 @@
+time-to-exchange-db-1-old ansible_host=92.255.79.151 ansible_user=root
+time-to-exchange-db-1 ansible_host=94.228.113.169 ansible_user=root
+
+[db]
+time-to-exchange-db-1

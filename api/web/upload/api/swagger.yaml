@@ -1,0 +1,204 @@
+openapi: 3.0.0
+info:
+  title: 'Time to exchange API'
+  description: 'API Time to exchange'
+  version: 1.0.0
+paths:
+  /auth/auth-register/auth-profile-info:
+    post:
+      tags:
+        - Authentification
+      operationId: auth-profile-info
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              properties:
+                city_id:
+                  description: city_id
+                  type: string
+                name:
+                  description: name
+                  type: string
+                email:
+                  description: email
+                  type: string
+              type: object
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema: {  }
+        '400':
+          description: 'Неправильный запрос'
+      security:
+        -
+          bearerAuth: []
+  /auth/default/confirm-phone:
+    post:
+      tags:
+        - Authentification
+      operationId: confirm-phone
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              required:
+                - phone
+              properties:
+                phone:
+                  description: 'Phone number of the user'
+                  type: string
+              type: object
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema: {  }
+        '400':
+          description: 'Неправильный запрос'
+  /auth/default/register-phone:
+    post:
+      tags:
+        - Authentification
+      operationId: register-phone
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              required:
+                - phone
+              properties:
+                phone:
+                  description: 'SMS that user recieves'
+                  type: string
+              type: object
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema: {  }
+        '400':
+          description: 'Неправильный запрос'
+  /auth/default/verify-sms:
+    post:
+      tags:
+        - Authentification
+      operationId: verify-sms
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              required:
+                - sms
+              properties:
+                sms:
+                  description: 'SMS that user recieves'
+                  type: string
+              type: object
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema: {  }
+        '400':
+          description: 'Неправильный запрос'
+  /category/category:
+    get:
+      tags:
+        - Категории
+      summary: 'Получить список всех категорий'
+      operationId: category
+      responses:
+        '200':
+          description: 'Список всех категорий'
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/CategoryList'
+  /users/default:
+    get:
+      tags:
+        - Пользователи
+      summary: 'Получить список всех пользователей'
+      operationId: index
+      responses:
+        '200':
+          description: 'Список всех пользователей'
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/CustomerList'
+  /users/default/view:
+    get:
+      tags:
+        - Пользователи
+      summary: 'Получить информацию о пользователе'
+      operationId: view
+      responses:
+        '200':
+          description: 'Информация о пользователе'
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/CustomerList'
+components:
+  schemas:
+    CategoryList:
+      properties:
+        id:
+          type: integer
+        title:
+          description: Название
+          type: string
+        description:
+          description: Описание
+          type: string
+        icon:
+          description: Иконка
+          type: string
+        sub-category:
+          $ref: '#/components/schemas/SubCategoryList'
+      type: object
+    SubCategoryList:
+      properties:
+        id:
+          type: integer
+        title:
+          description: Название
+          type: string
+        description:
+          description: Описание
+          type: string
+      type: object
+    CustomerList:
+      properties:
+        id:
+          type: integer
+        is_active:
+          description: Активность
+          type: string
+        name:
+          description: Имя
+          type: string
+        phone:
+          description: Телефон
+          type: string
+      type: object
+  securitySchemes:
+    bearerAuth:
+      type: http
+      name: Authorization
+      in: header
+      bearerFormat: JWT
+      scheme: bearer

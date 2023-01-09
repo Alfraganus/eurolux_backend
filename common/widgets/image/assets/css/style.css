@@ -1,0 +1,67 @@
+.widget-images {
+    margin: 10px 0;
+    border: 1px solid lightgray;
+    border-radius: 5px;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: flex-start;
+    align-items: center;
+    align-content: center;
+}
+
+.widget-images .glyphicon-pencil {
+    font-size: 25px;
+}
+
+.widget-images .thumbnail.image-item {
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: space-between;
+    height: auto;
+    margin: 15px 0;
+}
+
+.widget-images .thumbnail.image-item .caption {
+    word-wrap: break-word;
+    padding: 1px;
+}
+
+.widget-images .item {
+    cursor: pointer;
+    position: relative;
+    height: auto;
+    overflow: hidden;
+    margin-bottom: 5px;
+}
+
+.widget-images .item .img-responsive {
+    transition: all .5s ease;
+    width: auto;
+}
+
+.widget-images .item:hover .item-content {
+    opacity: 1;
+    transform: scale(0.9);
+}
+
+.widget-images .item:hover .img-responsive {
+    transform: scale(1.1);
+}
+
+.widget-images .item .item-content {
+    transform: scale(1.5);
+    transition: all .3s ease;
+    opacity: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10;
+    background-color: rgba(0, 0, 0, 0.6);
+    color: rgba(255, 255, 255, 0.9);
+    line-height: 1.5;
+}

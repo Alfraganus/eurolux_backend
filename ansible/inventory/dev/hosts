@@ -1,0 +1,11 @@
+time-to-exchange-dev-old ansible_user=root ansible_host=92.53.105.85
+time-to-exchange-dev ansible_user=root ansible_host=92.255.79.230
+
+[vagrant]
+time-to-exchange-dev
+
+[time-to-exchange-backend]
+time-to-exchange-dev
+
+[gitlab_runners]
+time-to-exchange-dev

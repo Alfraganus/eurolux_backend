@@ -1,0 +1,28 @@
+---
+- hosts: time-to-exchange-backend
+  vars:
+    php_version: '7.4'
+    document_root: "{{deploy_folder_destination}}"
+  roles:
+    - role: geerlingguy.php-versions
+      tags:
+        - php
+    - role: geerlingguy.php
+      tags:
+        - php
+    - role: geerlingguy.composer
+      tags:
+        - php
+        - composer
+    - role: time-to-exchange-backend-role
+      tags:
+        - app
+    - role: geerlingguy.certbot
+      tags:
+        - webserver
+        - certificates
+    - role: geerlingguy.nginx
+      roles:
+      tags:
+        - webserver
+

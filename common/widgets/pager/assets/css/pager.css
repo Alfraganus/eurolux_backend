@@ -1,0 +1,30 @@
+@media (min-width: 1024px) {
+    .link-pager {
+        display: flex;
+        align-items: center;
+    }
+}
+
+.page-size-dropdown {
+    display: flex;
+    align-items: center;
+}
+
+.link-pager .pagination {
+    margin-right: 20px;
+}
+
+.page-size-dropdown label {
+    margin-right: 10px;
+    color: #777;
+}
+
+.page-size-dropdown select {
+    height:34px;
+    display: block;
+    padding: 0 8px;
+    font-size: 14px;
+    border-radius: 0;
+    box-shadow: none;
+    border-color: #d2d6de;
+}

@@ -1,0 +1,169 @@
+variables:
+  PHP_VERSION: 7.4-fpm
+  CONTEXT: ${CI_PROJECT_DIR}
+
+.on_migration_changes:
+  only:
+    changes:
+      - app/migrations
+
+.on_development:
+  only:
+    refs:
+      - development
+
+.on_production:
+  only:
+    refs:
+      - main
+
+
+.kaniko_build:
+  retry: 2
+  image:
+    name: gcr.io/kaniko-project/executor:debug
+    entrypoint: ['']
+  variables:
+    IMAGE_NAME: ${CI_REGISTRY_IMAGE}
+    IMAGE_TAG: ${CI_COMMIT_SHORT_SHA}
+    BUILD_CONTEXT: ${CI_PROJECT_DIR}
+    DOCKERFILE_PATH: ${BUILD_CONTEXT}/Dockerfile
+    REGISTRY_URL: ${CI_REGISTRY}
+    REGISTRY_USER: ${CI_REGISTRY_USER}
+    REGISTRY_PASSWORD: ${CI_REGISTRY_PASSWORD}
+  script:
+    - mkdir -p /kaniko/.docker
+    - echo "{\"auths\":{\"${REGISTRY_URL}\":{\"auth\":\"$(printf "%s:%s" "${REGISTRY_USER}" "${REGISTRY_PASSWORD}" | base64 | tr -d '\n')\"}}}" > /kaniko/.docker/config.json
+    - |-
+      echo "Start kaniko build"
+      /kaniko/executor \
+        --cache=true \
+        --snapshotMode=redo \
+        --use-new-run \
+        --context "${BUILD_CONTEXT}" \
+        --dockerfile "${DOCKERFILE_PATH}" \
+        --destination "${IMAGE_NAME}:${IMAGE_TAG}"
+
+.php_cache:
+  cache:
+    paths:
+    - ${CONTEXT}/.composer-cache/
+    - ${CONTEXT}/vendor/
+
+.install_deps:
+  image: composer:2.4.4
+  retry: 2
+  script:
+    - cd ${CONTEXT}
+    - ls -la
+    - composer install --ignore-platform-reqs
+
+.migration:
+  image: php:${PHP_VERSION}
+  retry: 2
+  variables:
+    DB_HOST: mysql
+    DB_PORT: "3306"
+    DB_DRIVER: mysql
+    DB_DATABASE: time_to_exchange
+    DB_USERNAME: root
+    DB_PASSWORD: mysql
+  script:
+    - cd ${CONTEXT}
+    # install deps
+    - apt-get update && docker-php-ext-install pdo_mysql
+    # envs
+    # debug information
+    - echo "[DEBUG] DB connection at ${DB_DSN}"
+    - echo "[DEBUG] Login via ${DB_USERNAME}"
+    # configure to Dev env
+    - ./init --env=Development --overwrite=y  
+    # check migration history
+    - ./yii migrate/history
+    # run migrations
+    - ./yii migrate/up --interactive=0
+
+.fixture:
+  image: php:${PHP_VERSION}
+  retry: 2
+  variables:
+    DB_HOST: mysql
+    DB_PORT: "3306"
+    DB_DRIVER: mysql
+    DB_DATABASE: time_to_exchange
+    DB_USERNAME: root
+    DB_PASSWORD: mysql
+  before_script:
+    - cd ${CONTEXT}
+    # install deps
+    - apt-get update && docker-php-ext-install pdo_mysql
+    # envs
+    - cp .env.example .env
+    # debug information
+    - echo "[DEBUG] DB connection at ${DB_HOST}:${DB_PORT}"
+    - echo "[DEBUG] Database is ${DB_DATABASE}"
+    - echo "[DEBUG] Login via ${DB_USERNAME}"
+  script:
+    - php console.php route:add
+    - php console.php route-position:add
+    - php console.php station:add
+    - php console.php tariff:scan
+    - php console.php update:user-card-number
+
+.run_ansible_playbook:
+  image: willhallonline/ansible:2.13-ubuntu-20.04    
+  retry: 2
+  variables:
+    ANSIBLE_HOST_KEY_CHECKING: 'false'
+    ANSIBLE_FORCE_COLOR: 'true'
+    ANSIBLE_PYTHON_INTERPRRTER: /usr/bin/python3
+
+    ANSIBLE_SSH_KEY_BASE64_ENCODED: ""
+    ANSIBLE_SSH_KEY_PATH: id_rsa
+
+    ANSIBLE_VAULT_PASSWORD_BASE64_ENCODED: ""
+    ANSIBLE_VAULT_PASSWORD_PATH: vault-pass
+    
+    ANSIBLE_PLAYBOOK_PATH: playbook.yml
+    ANSIBLE_INVENTORY_PATH: hosts
+
+    ANSIBLE_REQUIREMENTS_FILE: requirements.yml
+
+    TARGET_REVISION: ${CI_COMMIT_REF_NAME}
+  script:
+    - echo $ANSIBLE_SSH_KEY_BASE64_ENCODED | base64 -d > ${ANSIBLE_SSH_KEY_PATH} && chown 600 ${ANSIBLE_SSH_KEY_PATH}
+    - echo $ANSIBLE_VAULT_PASSWORD_BASE64_ENCODED | base64 -d > ${ANSIBLE_VAULT_PASSWORD_PATH} && chown 600 ${ANSIBLE_SSH_KEY_PATH}
+    - ansible-galaxy install -r ${ANSIBLE_REQUIREMENTS_FILE}
+    - set -o xtrace
+    - |-
+      ansible-playbook \
+        ${ANSIBLE_PLAYBOOK_PATH} \
+        --inventory ${ANSIBLE_INVENTORY_PATH} \
+        --key-file ${ANSIBLE_SSH_KEY_PATH}  \
+        --vault-password-file ${ANSIBLE_VAULT_PASSWORD_PATH} \
+        --extra-vars "revision=${TARGET_REVISION}"
+  after_script:
+    # clean up
+    - rm ${ANSIBLE_SSH_KEY_PATH}
+    - rm ${ANSIBLE_VAULT_PASSWORD_PATH}
+  cache:
+    paths:
+      - /root/.ansible
+
+.mysql_backup:
+  retry: 2
+  image: databack/mysql-backup
+  variables:
+    DB_SERVER: mysql
+    DB_PORT: "3306"
+    DB_USER: root
+    DB_PASS: mysql
+    DB_NAMES: mysql
+    RUN_ONCE: "yes"
+    DB_DUMP_TARGET: ${CI_PROJECT_DIR}
+  before_script:
+    - echo "[DEBUG] Connect at - ${DB_SERVER}:${DB_PORT}"
+    - echo "[DEBUG] Username  is -  ${DB_USER}"
+    - echo "[DEBUG] DB to backup  are -  ${DB_NAMES}"
+  script:
+    - /entrypoint

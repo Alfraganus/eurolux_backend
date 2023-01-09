@@ -1,0 +1,19 @@
+roles:
+  - name: geerlingguy.pip
+  - name: geerlingguy.docker
+  - name: geerlingguy.mysql
+  - name: geerlingguy.certbot
+  - name: geerlingguy.nginx
+  - name: geerlingguy.php-versions
+  - name: geerlingguy.php
+  - name: geerlingguy.composer
+
+collections:
+  - name: ansible.posix
+    version: 1.4.0
+  - name: community.general
+    version: 5.5.0
+  - name: community.crypto # Only required if you plan to install NGINX Plus
+    version: 2.5.0
+  - name: community.docker # Only required if you plan to use Molecule (see below)
+    version: 3.1.0
