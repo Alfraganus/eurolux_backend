@@ -15,12 +15,7 @@ class CategoryApiController extends Controller
      *
      * @return AccessRule[]
      */
-    public function accessRules()
-    {
-        return [
-            'index' => $this->createAccess('get', true),
-        ];
-    }
+
 
     /**
      * Фильтрация перед вызовом действия
@@ -45,7 +40,6 @@ class CategoryApiController extends Controller
     {
         return [
             'index' => IndexAction::class,
-            'view' => ViewAction::class
         ];
     }
 

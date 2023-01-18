@@ -31,15 +31,15 @@ class MediaAssetDb
         $savingModel->object_id          = $model->id;
         $savingModel->asset_name         = $imageName;
         $savingModel->asset_extension    = $uploadedFile->extension;
-        $savingModel->asset_path         = $bucket_url . $imageName;
+        $savingModel->asset_path         = Yii::$app->params['STORAGE_BASE_URL_UPLOAD_FOLDER'] . $imageName;
         $savingModel->asset_mime         = $uploadedFile->type;
         $savingModel->asset_size        = $uploadedFile->size;
         if (!$savingModel->save()) {
             throw new UnsaveModelException(json_encode($savingModel->errors));
         }
-        $repository->uploadToS3(
-            $bucket_name . $imageName, $uploadedFile->tempName
-        );
+        $uploadedFile->saveAs(sprintf("../../storage/web/upload/%s",      $savingModel->asset_name));
+
+
     }
 
 }               

@@ -10,7 +10,7 @@ $params = array_merge(
 
 return [
     'id' => 'app-api',
-    'name' => getenv('api_name'),
+    'name' => 'app-api',
     'basePath' => dirname(__DIR__),
     'controllerNamespace' => 'api\controllers',
     'controllerMap' => [],
@@ -22,7 +22,7 @@ return [
             'enableCookieValidation' => false,
             'enableCsrfValidation' => false,
             'parsers' => [
-                'application/json' => 'yii\web\JsonParser',
+//                'application/json' => 'yii\web\JsonParser',
             ]
         ],
         'response' => [
@@ -34,27 +34,14 @@ return [
             'identityCookie' => ['name' => '_identity-api', 'httpOnly' => true],
         ],
         'session' => [
-            // this is the name of the session cookie used for login on the api
-            'name' => 'advanced-api',
+            'name' => 'advancedqwd-api',
         ],
-//        'log' => [
-//            'traceLevel' => YII_DEBUG ? 3 : 0,
-//            'targets' => [
-//                [
-//                    'class' => 'yii\log\FileTarget',
-//                    'levels' => ['error', 'warning'],
-//                ],
-//            ],
-//        ],
         'errorHandler' => [
             'errorAction' => 'site/error',
         ],
         'urlManager' => [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
-            'rules' => [
-                '<controller:(default)>s/<module:(users)>/users' => '<module>/users/index',
-            ],
         ],
     ],
     'params' => $params,

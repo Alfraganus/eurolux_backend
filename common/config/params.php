@@ -6,5 +6,6 @@ return [
     'senderName' => 'Example.com mailer',
     'user.passwordResetTokenExpire' => 3600,
     'user.passwordMinLength' => 8,
-    'STORAGE_BASE_URL' => 'http://localhost:8016/'
+    'STORAGE_BASE_URL' => 'http://storage.eurolux.back/',
+    'STORAGE_BASE_URL_UPLOAD_FOLDER' => 'http://storage.eurolux.back/upload/'
 ];
