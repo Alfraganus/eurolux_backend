@@ -30,7 +30,7 @@ class CategoryProvider
                 'title',
                 'description',
                 'icon' => function (Category $category) {
-                    return $category->image ? $category->image->asset_path : null;
+                    return $category->image ? $category->image->asset_name : null;
                 },
                 'sub-category' => function (Category $category) {
                     return $category->categories ? SubCategoryProvider::asList($category->categories) : null;

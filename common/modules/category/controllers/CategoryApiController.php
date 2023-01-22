@@ -3,6 +3,7 @@
 namespace common\modules\category\controllers;
 
 use common\modules\category\controllers\api\IndexAction;
+use common\modules\category\controllers\api\SubCategoryAction;
 use yii\base\Action;
 use yii\filters\AccessRule;
 use yii\rest\Controller;
@@ -40,6 +41,7 @@ class CategoryApiController extends Controller
     {
         return [
             'index' => IndexAction::class,
+            'sub' => SubCategoryAction::class,
         ];
     }
 
