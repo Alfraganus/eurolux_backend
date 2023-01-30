@@ -53,6 +53,7 @@ class SubCategory extends ActiveRecord
         ];
     }
 
+
     /**
      * {@inheritdoc}
      */

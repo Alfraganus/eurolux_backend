@@ -33,7 +33,8 @@
         "kartik-v/yii2-widget-fileinput": "^1.1",
         "league/flysystem-aws-s3-v3": "~1.0",
         "yiithings/yii2-dotenv": "^1.0",
-        "creocoder/yii2-flysystem": "^1.1"
+        "creocoder/yii2-flysystem": "^1.1",
+        "kartik-v/yii2-widget-depdrop": "^1.0"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "~2.1.0",

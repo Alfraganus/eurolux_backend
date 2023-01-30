@@ -43,25 +43,35 @@ class Publication extends \yii\db\ActiveRecord
         return 'publication';
     }
 
+    public $images;
     /**
      * {@inheritdoc}
      */
     public function rules()
     {
         return [
-            [['category_id', 'sub_category_id', 'title', 'description', 'price', 'location', 'is_mutually_surcharged'], 'required'],
+            [['category_id', 'sub_category_id', 'title',  'price'], 'required'],
             [['category_id', 'sub_category_id', 'tariff_id', 'is_mutually_surcharged', 'is_active','user_id'], 'integer'],
             [['description'], 'string'],
             [['distance'], 'safe'],
             [['price', 'latitude', 'longitude'], 'number'],
             [['link_video'], 'string', 'max' => 255],
             [['title'], 'string', 'max' => 500],
+            [['images'], 'file',  'extensions' => 'png, jpg', 'maxFiles' => 4],
             [['location'], 'string', 'max' => 300],
             [['category_id'], 'exist', 'skipOnError' => true, 'targetClass' => Category::class, 'targetAttribute' => ['category_id' => 'id']],
             [['sub_category_id'], 'exist', 'skipOnError' => true, 'targetClass' => SubCategory::class, 'targetAttribute' => ['sub_category_id' => 'id']],
             [['tariff_id'], 'exist', 'skipOnError' => true, 'targetClass' => PublicationTariff::class, 'targetAttribute' => ['tariff_id' => 'id']],
             [['user_id'], 'exist', 'skipOnError' => true, 'targetClass' => Users::class, 'targetAttribute' => ['user_id' => 'id']],
         ];
+    }
+
+
+    public function upload($images)
+    {
+        foreach ($images as $file) {
+            $file->saveAs('../../storage/web/upload/' . $file->baseName . '.' . $file->extension);
+        }
     }
 
 

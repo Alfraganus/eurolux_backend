@@ -2,6 +2,7 @@
 
 namespace common\modules\publication\models\providers;
 
+use common\models\MediaAsset;
 use Yii;
 use common\modules\publication\models\Publication;
 use common\modules\publication\models\PublicationImages;
@@ -20,46 +21,21 @@ class PublicationProvider extends Publication
             'sub_category'=> function (Publication $publication) {
                 return $publication->subCategory->title;
             },
-            'link_video',
             'title',
             'description',
             'price',
-            'location',
-            'latitude',
-            'longitude',
-            'tariff_id',
-            'is_mutually_surcharged'=> function () {
-                return (bool) $this->is_mutually_surcharged;
-            },
+
             'is_active'=> function () {
                 return (bool) $this->is_active;
             },
-            'images'=>function() {
-                return ArrayHelper::getColumn(
-                    PublicationImages::find()->select('image')
-                        ->where(['publication_id'=>$this->id])
-                        ->asArray()
-                        ->all(),'image');
+            'image'=>function() {
+                return MediaAsset::find()->select('asset_name')
+                    ->where(['source_table'=>'publication'])
+                    ->andWhere(['object_id'=>$this->id])
+                    ->orderBy('id ASC')
+                    ->one()->asset_name??null;
             },
-            'tags' => function () {
-                return ArrayHelper::getColumn(
-                    ArrayHelper::getColumn(PublicationTagProvider::find()
-                        ->where(['publication_id' => $this->id])
-                        ->all(), 'tag'), 'name');
-            },
-            'exchange_category'=> function() {
-                return PublicationExchangeCategoryProvider::find()
-                    ->where(['publication_id'=>$this->id])
-                    ->all();
-            },
-          'distance'=> function() {
-              return   $this->getDistanceBetweenPointsNew(
-                    $this->latitude,
-                    $this->longitude,
-                    40.779544,
-                    72.367030
-                );
-            }
+
         ];
 
     }

@@ -21,7 +21,7 @@ class MediaAssetDb
         return MediaAsset::findOne(['object_id'=>$model->id]);
     }
 
-    public function saveSingleAsset(UploadedFile $uploadedFile, $model, $source_table, $bucket_url, $bucket_name,$isNewRecord )
+    public function saveSingleAsset(UploadedFile $uploadedFile, $model, $source_table,$isNewRecord )
     {
         $imageName                       = $uploadedFile->baseName . time() . '.' . $uploadedFile->extension;
         $repository                      = Yii::createObject(PublicationRepository::class);

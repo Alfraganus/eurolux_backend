@@ -14,7 +14,7 @@ use andrewdanilov\adminpanel\widgets\Menu;
 		['label' => 'Dashboard', 'url' => ['/site/index'], 'icon' => 'desktop'],
 		[],
 		['label' => 'Разделы приложения'],
-		['label' => 'Публикации', 'url' => ['/publication/default/index'], 'icon' => ['symbol' => 'newspaper', 'type' => 'regular']],
+		['label' => 'Публикации', 'url' => ['/publication/publication/index'], 'icon' => ['symbol' => 'newspaper', 'type' => 'regular']],
 		['label' => 'Пользователи', 'url' => ['/users/default/index'], 'icon' => ['symbol' => 'newspaper', 'type' => 'solid']],
 		['label' => 'Категории', 'url' => ['/category/category/index'], 'icon' => ['symbol' => 'newspaper', 'type' => 'solid']],
 		[],
