@@ -6,6 +6,7 @@ use common\modules\publication\actions\GetAllPublicationAction;
 use common\modules\publication\actions\GetAllPublicationByCategoryAction;
 use common\modules\publication\actions\GetAllPublicationByUserIdAction;
 use common\modules\publication\actions\GetAllPublicationNoAuthAction;
+use common\modules\publication\actions\GetPublicationByIdAction;
 use yii\filters\auth\CompositeAuth;
 use yii\filters\auth\HttpBearerAuth;
 use yii\rest\Controller;
@@ -33,6 +34,7 @@ class ApiNoAuthController extends Controller
     public function actions()
     {
         return [
+            'get-publications-by-id'            => GetPublicationByIdAction::class,
             'get-publications-by-category-id'   => GetAllPublicationByCategoryAction::class,
             'get-publication-no-auth'           => GetAllPublicationNoAuthAction::class,
             'get-publications-by-userid'        => GetAllPublicationByUserIdAction::class,
