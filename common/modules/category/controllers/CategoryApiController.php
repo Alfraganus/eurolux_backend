@@ -11,13 +11,16 @@ use yii\web\NotFoundHttpException;
 
 class CategoryApiController extends Controller
 {
-    /**
-     * Список правил доступа к экшенам контроллера.
-     *
-     * @return AccessRule[]
-     */
 
-
+    public function behaviors()
+    {
+        return [
+            'corsFilter' => [
+                'class' => \yii\filters\Cors::class,
+            ],
+            // Other behaviors...
+        ];
+    }
     /**
      * Фильтрация перед вызовом действия
      *
