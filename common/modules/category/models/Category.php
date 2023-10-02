@@ -40,6 +40,18 @@ class Category extends \yii\db\ActiveRecord
         return '{{%category}}';
     }
 
+    public function fields()
+    {
+        return [
+            'id',
+            'icon' => function (Category $category) {
+                $image = $category->icon;
+                return "https://api.spector77.uz/storage/web/upload/$image";
+            },
+            'title',
+        ];
+    }
+
     /**
      * {@inheritdoc}
      * @return \common\modules\category\models\scopes\CategoryQuery the active query used by this AR class.
