@@ -30,7 +30,8 @@ class CategoryProvider
                 'title',
                 'description',
                 'icon' => function (Category $category) {
-                    return $category->image ? $category->image->asset_name : null;
+                   $image = $category->image ? $category->image->asset_name : 'no-image.png';
+                    return "https://api.spector77.uz/storage/web/upload/$image";
                 },
                 'sub-category' => function (Category $category) {
                     return $category->categories ? SubCategoryProvider::asList($category->categories) : null;
