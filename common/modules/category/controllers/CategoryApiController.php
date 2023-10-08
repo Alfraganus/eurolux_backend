@@ -48,6 +48,7 @@ class CategoryApiController extends Controller
         ];
     }
 
+
     /**
      * @inheritdoc
      */

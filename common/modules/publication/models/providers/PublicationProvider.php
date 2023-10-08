@@ -29,7 +29,7 @@ class PublicationProvider extends Publication
                 return (bool) $this->is_active;
             },
             'image'=>function() {
-                return MediaAsset::find()->select('asset_name')
+                return MediaAsset::find()->select(['asset_name','asset_path'])
                     ->where(['source_table'=>'publication'])
                     ->andWhere(['object_id'=>$this->id])
                     ->orderBy('id ASC')
